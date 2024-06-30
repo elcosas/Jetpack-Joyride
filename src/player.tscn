@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://m2c2k0fn0xx3"]
+
+[ext_resource type="Texture2D" uid="uid://dm5a8vuj077t4" path="res://icon.svg" id="1_41hpj"]
+[ext_resource type="Script" path="res://player.gd" id="1_tojov"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ioo2"]
+size = Vector2(38, 65)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_tojov")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.5)
+texture = ExtResource("1_41hpj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3ioo2")
+
+[node name="PropulsionCooldown" type="Timer" parent="."]

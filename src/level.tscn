@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cygpcaplne4en"]
+
+[ext_resource type="Script" path="res://debug_menu.gd" id="1_f0gmn"]
+[ext_resource type="Texture2D" uid="uid://dm5a8vuj077t4" path="res://icon.svg" id="1_vrptd"]
+[ext_resource type="PackedScene" uid="uid://m2c2k0fn0xx3" path="res://player.tscn" id="2_vu5gy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfts0"]
+size = Vector2(65, 65)
+
+[node name="Level" type="Node2D"]
+
+[node name="DebugMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("1_f0gmn")
+player = NodePath("../Player")
+
+[node name="TempGround" type="StaticBody2D" parent="."]
+position = Vector2(235, 546)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TempGround"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_vrptd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempGround"]
+shape = SubResource("RectangleShape2D_gfts0")
+
+[node name="Player" parent="." instance=ExtResource("2_vu5gy")]
+position = Vector2(235, 354)
