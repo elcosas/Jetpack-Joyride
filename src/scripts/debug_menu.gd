@@ -14,10 +14,12 @@ func _process(_delta: float) -> void:
 	_label.set_text(
 		'''
 		FPS: %s\n
+		Health: %s\n
 		Velocity: %s\n
 		Can Shoot: %s\n
 		''' % [
 			str(Engine.get_frames_per_second()),
+			str(player.health),
 			str(player.velocity),
 			str(player._can_shoot),]
 	)

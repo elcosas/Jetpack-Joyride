@@ -6,6 +6,10 @@ extends Actor
 
 @export var bullet_cooldown: float = 0.2
 
+@export var max_health: int = 3
+
+var health: int
+
 var _can_shoot: bool = true
 
 @onready var _propulsion_cooldown_timer: Timer = (
@@ -16,9 +20,13 @@ func shoot() -> void:
 	_can_shoot = false
 	_propulsion_cooldown_timer.start()
 
+func take_damage(damage: int) -> void:
+	health -= damage
+
 func _ready() -> void:
 	_propulsion_cooldown_timer.set_wait_time(bullet_cooldown)
 	_propulsion_cooldown_timer.connect(&'timeout', func(): _can_shoot = true)
+	health = max_health
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed('hover') and _can_shoot:
