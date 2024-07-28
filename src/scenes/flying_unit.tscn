@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8u0f7u7kvm2q"]
+
+[ext_resource type="Script" path="res://scripts/actor.gd" id="1_1ooga"]
+[ext_resource type="Texture2D" uid="uid://dm5a8vuj077t4" path="res://icon.svg" id="1_4jkql"]
+[ext_resource type="Script" path="res://scripts/obstacle_component.gd" id="3_jkn1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m421o"]
+size = Vector2(60, 60)
+
+[node name="Flying Unit" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_1ooga")
+rotational_velocity = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_4jkql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m421o")
+
+[node name="ObstacleComponent" type="Area2D" parent="." node_paths=PackedStringArray("body")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_jkn1n")
+body = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleComponent"]
+shape = SubResource("RectangleShape2D_m421o")
