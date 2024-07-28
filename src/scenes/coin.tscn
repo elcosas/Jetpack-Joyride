@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfa20xakv62ko"]
+
+[ext_resource type="Texture2D" uid="uid://dm5a8vuj077t4" path="res://icon.svg" id="1_04exr"]
+[ext_resource type="Script" path="res://scripts/actor.gd" id="1_8m8u0"]
+[ext_resource type="Script" path="res://scripts/coin_component.gd" id="2_53wie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfijc"]
+size = Vector2(25, 25)
+
+[node name="Coin" type="CharacterBody2D"]
+script = ExtResource("1_8m8u0")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_04exr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qfijc")
+
+[node name="CoinComponent" type="Area2D" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("2_53wie")
+body = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinComponent"]
+shape = SubResource("RectangleShape2D_qfijc")
