@@ -10,6 +10,7 @@ size = Vector2(38, 65)
 [node name="Patrol Unit" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_rdgr4")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.5)

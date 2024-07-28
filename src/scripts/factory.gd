@@ -1,15 +1,31 @@
 class_name Factory
-extends Node
-## generates obstacles that the player can interact with
+extends Node2D
+## Object that instantiates other objects from scenes into the current scene.
+## Mainly used for spawning obstacles that move across the screen
 
-@export var obstacle: PackedScene
+@export var object: PackedScene
 
-var y_bounds: Array[int]
+@export var height_randomness: float = 0.0
+
+@export var spawn_time: float = 2.0
+
+@export var random_delay: float = 0.0
+
+@onready var timer: Timer = Timer.new()
+
+var _inital_pos: Vector2
 
 func spawn() -> void:
-	var obstacle_inst: Node2D = obstacle.instantiate() as Node2D
-	var y_coord: int = randi_range(y_bounds.min(), y_bounds.max())
-	obstacle_inst.position.y = y_coord
+	position.y += randf_range(0.0, height_randomness)
+	if object:
+		var obj_inst: Node2D = object.instantiate() as Node2D
+		obj_inst.position = position
+		get_parent().add_child(obj_inst)
+	position = _inital_pos
+	timer.start(spawn_time+randf_range(0.0, random_delay))
 
 func _ready() -> void:
-	y_bounds
+	_inital_pos = position
+	timer.connect(&'timeout', spawn)
+	add_child(timer)
+	timer.start(spawn_time)

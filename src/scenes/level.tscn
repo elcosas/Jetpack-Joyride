@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cygpcaplne4en"]
+[gd_scene load_steps=5 format=3 uid="uid://cygpcaplne4en"]
 
 [ext_resource type="Script" path="res://scripts/debug_menu.gd" id="1_f0gmn"]
 [ext_resource type="Texture2D" uid="uid://dm5a8vuj077t4" path="res://icon.svg" id="1_vrptd"]
 [ext_resource type="PackedScene" uid="uid://m2c2k0fn0xx3" path="res://scenes/player.tscn" id="2_vu5gy"]
-[ext_resource type="PackedScene" uid="uid://47ifsyl4fupn" path="res://scenes/patrol_unit.tscn" id="4_886m2"]
-[ext_resource type="PackedScene" uid="uid://c8u0f7u7kvm2q" path="res://scenes/flying_unit.tscn" id="5_ab2tm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfts0"]
 size = Vector2(65, 65)
@@ -29,9 +27,3 @@ shape = SubResource("RectangleShape2D_gfts0")
 
 [node name="Player" parent="." instance=ExtResource("2_vu5gy")]
 position = Vector2(235, 354)
-
-[node name="Patrol Unit" parent="." instance=ExtResource("4_886m2")]
-position = Vector2(882, 445)
-
-[node name="Flying Unit" parent="." instance=ExtResource("5_ab2tm")]
-position = Vector2(1022, 337)

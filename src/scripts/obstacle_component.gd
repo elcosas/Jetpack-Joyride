@@ -15,12 +15,10 @@ func collide(colbody: Node2D) -> void:
 		(colbody as Player).take_damage(damage)
 		# free the body so the whole obstacle is removed from the scene
 		body.queue_free()
-		print(name+' detected collision')
 
 func _ready() -> void:
 	# since this is an obstacle, it just needs to have a constant x velocity
 	# to keep up with the rest of the level's objects
 	body.velocity.x = -move_speed
-	
 	connect(&'body_entered', collide)
 	
