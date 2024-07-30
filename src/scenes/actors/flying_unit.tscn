@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8u0f7u7kvm2q"]
+
+[ext_resource type="Script" path="res://scripts/actor.gd" id="1_hf8ft"]
+[ext_resource type="Texture2D" uid="uid://06c84d2y42ni" path="res://assets/puzzle_assets/element_red_polygon.png" id="2_bfhhc"]
+[ext_resource type="Script" path="res://scripts/components/obstacle_component.gd" id="3_sjt4y"]
+
+[node name="Flying Unit" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_hf8ft")
+rotational_velocity = 1.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bfhhc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(0, -23, 24, -6, 15, 23, -15, 23, -24, -5)
+
+[node name="ObstacleComponent" type="Area2D" parent="." node_paths=PackedStringArray("body")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_sjt4y")
+body = NodePath("..")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ObstacleComponent"]
+visible = false
+polygon = PackedVector2Array(0, -23, 24, -6, 15, 23, -15, 23, -24, -5)

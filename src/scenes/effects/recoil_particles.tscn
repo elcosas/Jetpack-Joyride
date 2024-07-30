@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://owbdgj74hb5k"]
+
+[ext_resource type="Script" path="res://scripts/utilities/oneshot_particles.gd" id="1_qbtaw"]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+position = Vector2(0, 11.85)
+emitting = false
+amount = 16
+lifetime = 0.25
+speed_scale = 0.5
+explosiveness = 1.0
+draw_order = 1
+direction = Vector2(0, 1)
+spread = 90.0
+initial_velocity_min = 150.0
+initial_velocity_max = 300.0
+scale_amount_min = 2.0
+scale_amount_max = 6.0
+color = Color(0.941176, 0.290196, 0, 1)
+script = ExtResource("1_qbtaw")

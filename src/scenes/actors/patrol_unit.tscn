@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://47ifsyl4fupn"]
 
-[ext_resource type="Texture2D" uid="uid://dm5a8vuj077t4" path="res://icon.svg" id="1_emhi3"]
 [ext_resource type="Script" path="res://scripts/actor.gd" id="1_rdgr4"]
-[ext_resource type="Script" path="res://scripts/obstacle_component.gd" id="3_qrhnd"]
+[ext_resource type="Texture2D" uid="uid://dp41av0xxxnib" path="res://assets/robot_pack/robot_redDrive1.png" id="2_2cn0a"]
+[ext_resource type="Script" path="res://scripts/components/obstacle_component.gd" id="3_qrhnd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p4u6"]
-size = Vector2(38, 65)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atkv0"]
+size = Vector2(54, 45)
 
 [node name="Patrol Unit" type="CharacterBody2D"]
 collision_layer = 2
@@ -13,11 +13,12 @@ script = ExtResource("1_rdgr4")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.5)
-texture = ExtResource("1_emhi3")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_2cn0a")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_4p4u6")
+shape = SubResource("RectangleShape2D_atkv0")
 
 [node name="ObstacleComponent" type="Area2D" parent="." node_paths=PackedStringArray("body")]
 collision_layer = 4
@@ -26,4 +27,4 @@ script = ExtResource("3_qrhnd")
 body = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleComponent"]
-shape = SubResource("RectangleShape2D_4p4u6")
+shape = SubResource("RectangleShape2D_atkv0")

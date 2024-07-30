@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy1dnuaxc6kul"]
+
+[ext_resource type="Shader" path="res://resources/scrolling_shader_material.gdshader" id="1_xbmer"]
+[ext_resource type="Texture2D" uid="uid://c7pj5smsfxos8" path="res://assets/prototype_textures/texture_07.png" id="2_h815k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4i3r"]
+shader = ExtResource("1_xbmer")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5b1cw"]
+size = Vector2(1638.4, 102.4)
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_t4i3r")
+position = Vector2(576, 600)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_h815k")
+region_enabled = true
+region_rect = Rect2(0, 0, 8192, 512)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(576, 600)
+shape = SubResource("RectangleShape2D_5b1cw")

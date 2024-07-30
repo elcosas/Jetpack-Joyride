@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dm5a8vuj077t4" path="res://icon.svg" id="1_04exr"]
 [ext_resource type="Script" path="res://scripts/actor.gd" id="1_8m8u0"]
-[ext_resource type="Script" path="res://scripts/coin_component.gd" id="2_53wie"]
+[ext_resource type="Script" path="res://scripts/components/coin_component.gd" id="2_53wie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfijc"]
 size = Vector2(25, 25)

@@ -1,29 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://cygpcaplne4en"]
+[gd_scene load_steps=8 format=3 uid="uid://cygpcaplne4en"]
 
-[ext_resource type="Script" path="res://scripts/debug_menu.gd" id="1_f0gmn"]
-[ext_resource type="Texture2D" uid="uid://dm5a8vuj077t4" path="res://icon.svg" id="1_vrptd"]
-[ext_resource type="PackedScene" uid="uid://m2c2k0fn0xx3" path="res://scenes/player.tscn" id="2_vu5gy"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfts0"]
-size = Vector2(65, 65)
+[ext_resource type="Script" path="res://scripts/utilities/debug_menu.gd" id="1_riomf"]
+[ext_resource type="PackedScene" uid="uid://m2c2k0fn0xx3" path="res://scenes/actors/player.tscn" id="2_vu5gy"]
+[ext_resource type="PackedScene" uid="uid://cfpf44dww2w2r" path="res://scenes/enviornment/parallax_background.tscn" id="2_w7ywk"]
+[ext_resource type="PackedScene" uid="uid://dy1dnuaxc6kul" path="res://scenes/enviornment/wall.tscn" id="3_iopyh"]
+[ext_resource type="PackedScene" uid="uid://c8u0f7u7kvm2q" path="res://scenes/actors/flying_unit.tscn" id="5_flqyo"]
+[ext_resource type="PackedScene" uid="uid://47ifsyl4fupn" path="res://scenes/actors/patrol_unit.tscn" id="5_k7ix2"]
+[ext_resource type="Script" path="res://scripts/factory.gd" id="5_v4m7u"]
 
 [node name="Level" type="Node2D"]
 
 [node name="DebugMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("1_f0gmn")
+script = ExtResource("1_riomf")
 player = NodePath("../Player")
 
-[node name="TempGround" type="StaticBody2D" parent="."]
-position = Vector2(570, 589)
-scale = Vector2(14.96, 1.48)
-metadata/_edit_group_ = true
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_w7ywk")]
 
-[node name="Sprite2D" type="Sprite2D" parent="TempGround"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_vrptd")
+[node name="Enviornment" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TempGround"]
-shape = SubResource("RectangleShape2D_gfts0")
+[node name="Ceiling" parent="Enviornment" instance=ExtResource("3_iopyh")]
+position = Vector2(0, -625)
+
+[node name="Floor" parent="Enviornment" instance=ExtResource("3_iopyh")]
+
+[node name="Flying Factory" type="Node2D" parent="."]
+position = Vector2(1300, 530)
+script = ExtResource("5_v4m7u")
+object = ExtResource("5_flqyo")
+height_randomness = -500.0
+spawn_time = 1.0
+random_delay = 5.0
+
+[node name="Flying Factory2" type="Node2D" parent="."]
+position = Vector2(1300, 530)
+script = ExtResource("5_v4m7u")
+object = ExtResource("5_flqyo")
+height_randomness = -500.0
+spawn_time = 1.0
+random_delay = 5.0
+
+[node name="Patrol Factory" type="Node2D" parent="."]
+position = Vector2(1300, 550)
+script = ExtResource("5_v4m7u")
+object = ExtResource("5_k7ix2")
+spawn_time = 5.0
+random_delay = 5.0
 
 [node name="Player" parent="." instance=ExtResource("2_vu5gy")]
 position = Vector2(235, 354)
