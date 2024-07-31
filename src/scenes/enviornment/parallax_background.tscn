@@ -1,19 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfpf44dww2w2r"]
 
 [ext_resource type="Script" path="res://scripts/utilities/parallax_background.gd" id="1_avqy3"]
-[ext_resource type="Texture2D" uid="uid://du2q2ifrcvmku" path="res://assets/prototype_textures/texture_03.png" id="2_ygcpi"]
+[ext_resource type="Texture2D" uid="uid://dipke4vw2i1ck" path="res://assets/platformer-redux/Backgrounds/colored_desert.png" id="2_104ap"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 scroll_ignore_camera_zoom = true
 script = ExtResource("1_avqy3")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(1177.6, 0)
+motion_mirroring = Vector2(1425, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
 texture_repeat = 2
 position = Vector2(576, 324)
-scale = Vector2(1.15, 0.85)
-texture = ExtResource("2_ygcpi")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_104ap")
 region_enabled = true
-region_rect = Rect2(0, 0, 1024, 1024)
+region_rect = Rect2(0, 0, 2065, 1024)
