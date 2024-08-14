@@ -6,6 +6,7 @@ extends CanvasLayer
 
 var _label: Label
 
+
 func _ready() -> void:
 	_label = Label.new()
 	add_child(_label)
@@ -16,10 +17,8 @@ func _process(_delta: float) -> void:
 		FPS: %s\n
 		Health: %s\n
 		Velocity: %s\n
-		Can Shoot: %s\n
 		''' % [
 			str(Engine.get_frames_per_second()),
-			str(player.health),
-			str(player.velocity),
-			str(player._can_shoot),]
+			str(player.cur_health),
+			str(player.velocity),]
 	)

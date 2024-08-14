@@ -1,20 +1,32 @@
 class_name Actor
 extends CharacterBody2D
-## Simple CharacterBody2D extension that accounts for basic gravity, movement,
-## collision, rotation, and input.
-## All velocity changes should be made through the child's `_process()`
-## function. DO NOT OVERRIDE `_physics_process()`
 
-@export var rotational_velocity: float = 0.0
+@export var movement_speed_factor: float = 200.0
 
-@onready var _gravity: int = (
-	ProjectSettings.get_setting('physics/2d/default_gravity') as int)
+var sprite: Sprite2D
 
-var last_collision: KinematicCollision2D
+var collider: Area2D
 
-func _physics_process(delta: float) -> void:
-	if motion_mode == MOTION_MODE_GROUNDED and not is_on_floor():
-		velocity.y += _gravity * delta
-	rotate(rotational_velocity * PI / 180.0)
+var anim_player: AnimationPlayer
+
+
+func _physics_process(_delta: float) -> void:
+	velocity.x = -movement_speed_factor
 	move_and_slide()
-	last_collision = get_last_slide_collision()
+	# if the actors goes past the left screen, free them
+	if position.x < -50.0:
+		queue_free()
+
+
+func _ready() -> void:
+	# because i'm not using composition, I need to manually get a reference to
+	# possible existing child nodes for child classes to use. this unfortunately
+	# means that these lines can't be type-hinted as get_node_or_null isn't 
+	# guaranteed to return an object.
+	#
+	# another solid reason why I should have just used composition.
+	sprite = get_node_or_null('Sprite2D')
+	collider = get_node_or_null('Collider')
+	anim_player = get_node_or_null('AnimationPlayer')
+	if anim_player is AnimationPlayer:
+		(anim_player as AnimationPlayer).play(&'main')

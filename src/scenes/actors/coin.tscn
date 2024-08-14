@@ -1,26 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfa20xakv62ko"]
+[gd_scene load_steps=4 format=3 uid="uid://bfa20xakv62ko"]
 
-[ext_resource type="Texture2D" uid="uid://dm5a8vuj077t4" path="res://icon.svg" id="1_04exr"]
-[ext_resource type="Script" path="res://scripts/actor.gd" id="1_8m8u0"]
-[ext_resource type="Script" path="res://scripts/components/coin_component.gd" id="2_53wie"]
+[ext_resource type="Script" path="res://scripts/obstacle_actor.gd" id="1_7xlfd"]
+[ext_resource type="Texture2D" uid="uid://c80ooxreybt2d" path="res://assets/chosen/coinGold.png" id="2_j6y6r"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfijc"]
-size = Vector2(25, 25)
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgvj5"]
+radius = 8.0
 
-[node name="Coin" type="CharacterBody2D"]
-script = ExtResource("1_8m8u0")
+[node name="Coin" type="CharacterBody2D" groups=["Coin"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_7xlfd")
+damage = 0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_04exr")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_j6y6r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_qfijc")
+visible = false
+shape = SubResource("CircleShape2D_fgvj5")
 
-[node name="CoinComponent" type="Area2D" parent="." node_paths=PackedStringArray("body")]
-script = ExtResource("2_53wie")
-body = NodePath("..")
+[node name="Collider" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinComponent"]
-shape = SubResource("RectangleShape2D_qfijc")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+visible = false
+shape = SubResource("CircleShape2D_fgvj5")
