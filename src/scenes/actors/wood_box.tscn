@@ -14,7 +14,10 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 size = Vector2(64, 64)
 
 [node name="Wood Box" type="CharacterBody2D"]
-collision_layer = 4
+modulate = Color(0.690196, 0.690196, 0.690196, 1)
+z_index = -2
+collision_layer = 16
+collision_mask = 17
 script = ExtResource("1_ye1yf")
 metadata/_edit_group_ = true
 

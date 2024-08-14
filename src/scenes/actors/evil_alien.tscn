@@ -53,6 +53,7 @@ _data = {
 }
 
 [node name="Evil Alien" type="CharacterBody2D"]
+z_index = -1
 collision_layer = 4
 script = ExtResource("1_gdqc6")
 metadata/_edit_group_ = true

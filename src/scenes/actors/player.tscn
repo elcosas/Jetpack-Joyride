@@ -102,6 +102,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 2
 script = ExtResource("1_tojov")
 metadata/_edit_group_ = true
@@ -115,14 +116,15 @@ hframes = 3
 frame = 2
 
 [node name="GunPack" type="Sprite2D" parent="."]
-z_index = -1
+show_behind_parent = true
 position = Vector2(-22.5, 5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_aen0n")
 hframes = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="GunPack"]
-z_index = -2
+show_behind_parent = true
+z_index = -3
 emitting = false
 amount = 32
 process_material = ExtResource("4_uwr3c")

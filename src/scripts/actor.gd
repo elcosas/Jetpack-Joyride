@@ -14,7 +14,7 @@ func _physics_process(_delta: float) -> void:
 	velocity.x = -movement_speed_factor
 	move_and_slide()
 	# if the actors goes past the left screen, free them
-	if position.x < -50.0:
+	if global_position.x < -50.0:
 		queue_free()
 
 
